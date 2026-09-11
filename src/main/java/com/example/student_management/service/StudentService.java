@@ -19,4 +19,8 @@ public class StudentService {
     public List<Student>findAll(){
         return studentMapper.findAll();
     }
+
+    public int insert(Student student){
+        return studentMapper.insert(student);
+    }
 }

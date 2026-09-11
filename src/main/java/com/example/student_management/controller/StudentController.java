@@ -19,4 +19,8 @@ public class StudentController {
     public java.util.List<Student>findAll(){
         return studentService.findAll();
     }
+    @PostMapping("/insert")
+    public int insert(@RequestBody Student student){
+        return studentService.insert(student);
+    }
 }

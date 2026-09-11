@@ -1,0 +1,9 @@
+POST http://localhost:8080/students/insert
+Content-Type: application/json
+
+{
+  "name": "王五",
+  "age": 22,
+  "gender": "男",
+  "email":"wangwu@example.com"
+}
