@@ -23,4 +23,8 @@ public class StudentController {
     public int insert(@RequestBody Student student){
         return studentService.insert(student);
     }
+    @PutMapping("/update")
+    public int update(@RequestBody Student student){
+        return studentService.update(student);
+    }
 }

@@ -23,4 +23,8 @@ public class StudentService {
     public int insert(Student student){
         return studentMapper.insert(student);
     }
+
+    public int update(Student student){
+        return studentMapper.update(student);
+    }
 }

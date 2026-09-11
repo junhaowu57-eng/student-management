@@ -5,6 +5,7 @@ public class Student {
     private String name;
     private Integer age;
     private String gender;
+    private String email;
     public Integer getId(){
         return id;
     }
@@ -28,5 +29,11 @@ public class Student {
     }
     public void setGender(String gender){
         this.gender=gender;
+    }
+    public String getEmail(){
+        return email;
+    }
+    public void setEmail(String email){
+        this.email=email;
     }
 }

@@ -1,0 +1,10 @@
+PUT http://localhost:8080/students/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "张三",
+  "age": 21,
+  "gender": "女",
+  "email":"zhangsan@example.com"
+}
