@@ -27,4 +27,8 @@ public class StudentService {
     public int update(Student student){
         return studentMapper.update(student);
     }
+
+    public int delete(Integer id){
+        return studentMapper.delete(id);
+    }
 }

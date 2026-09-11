@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Delete;
 import java.util.List;
 
 @Mapper
@@ -17,4 +18,6 @@ public interface StudentMapper {
     int insert(Student student);
     @Update("UPDATE student SET name=#{name},age=#{age},gender=#{gender},email=#{email} WHERE id=#{id}")
     int update(Student student);
+    @Delete("DELETE FROM student WHERE id=#{id}")
+    int delete(Integer id);
 }
