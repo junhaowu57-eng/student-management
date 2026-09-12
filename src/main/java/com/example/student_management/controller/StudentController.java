@@ -1,6 +1,7 @@
 package com.example.student_management.controller;
 
 import com.example.student_management.Student;
+import com.example.student_management.common.Result;
 import com.example.student_management.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,12 @@ public class StudentController {
         this.studentService=studentService;
     }
     @GetMapping("/{id}")
-    public Student findById(@PathVariable Integer id){
-        return studentService.findById(id);
+    public Result findById(@PathVariable Integer id){
+       Student student=studentService.findById(id);
+       if(student==null){
+        return Result.error(404,"学生不存在");
+       }
+       return Result.success(student);
     }
     @GetMapping
     public java.util.List<Student>findAll(){
