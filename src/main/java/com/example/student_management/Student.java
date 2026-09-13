@@ -1,8 +1,13 @@
 package com.example.student_management;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 public class Student {
     private Integer id;
+    @NotBlank (message="姓名不能为空")
     private String name;
+    @Min (value=1,message="年龄不能小于1")
     private Integer age;
     private String gender;
     private String email;
