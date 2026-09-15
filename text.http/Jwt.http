@@ -1,0 +1,2 @@
+GET http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwiaWF0IjoxNzg5NDc3MTQ3LCJleHAiOjE3ODk0ODA3NDd9.wMj44c-Yd8Mc_4AW1MLF2JWCMnQbnyrcE6mb3rut7FTUc2a1pXvEeGOKPpeH3qSO

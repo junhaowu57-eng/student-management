@@ -3,6 +3,7 @@ package com.example.student_management.controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.student_management.service.UserService;
+import com.example.student_management.utils.JwtUtil;
 
 import jakarta.validation.Valid;
 
@@ -35,6 +36,7 @@ public class UserController {
         if(loginUser==null){
             return Result.error(400,"用户名或密码错误");
         }
-        return Result.success("登录成功");
+        String token=JwtUtil.generateToken(loginUser.getUsername());
+        return Result.success(token);
     }
 }
