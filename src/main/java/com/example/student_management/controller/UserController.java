@@ -19,6 +19,7 @@ public class UserController {
     public UserController(UserService userService){
         this.userService=userService;
     }
+
     @PostMapping("/register")
     public Result register(@Valid @RequestBody User user){
         int rows=userService.register(user);
@@ -27,6 +28,7 @@ public class UserController {
         }
         return Result.success(rows);
     }
+    
     @PostMapping("/login")
     public Result login(@Valid @RequestBody User user){
         User loginUser=userService.login(
@@ -36,7 +38,7 @@ public class UserController {
         if(loginUser==null){
             return Result.error(400,"用户名或密码错误");
         }
-        String token=JwtUtil.generateToken(loginUser.getUsername());
+        String token=JwtUtil.generateToken(loginUser.getUsername(),loginUser.getRole());
         return Result.success(token);
     }
 }

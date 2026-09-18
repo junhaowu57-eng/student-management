@@ -1,6 +1,7 @@
 package com.example.student_management;
 
 import jakarta.validation.constraints.NotBlank;
+import com.example.student_management.enums.Role;
 
 public class User {
     private Integer id;
@@ -8,6 +9,7 @@ public class User {
     private String username;
     @NotBlank (message="密码不能为空")
     private String password;
+    private Role role;
     public Integer getId(){
         return id;
     }
@@ -25,5 +27,11 @@ public class User {
     }
     public void setPassword(String password){
         this.password=password;
+    }
+    public Role getRole(){
+        return role;
+    }
+    public void setRole(Role role){
+        this.role=role;
     }
 }

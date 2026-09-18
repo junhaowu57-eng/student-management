@@ -1,0 +1,2 @@
+DELETE http://localhost:8080/students/delete/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODk3MjAwMjMsImV4cCI6MTc4OTcyMzYyM30.ihr6aduG-9LZMEunaQ8cDRz2kKLvjWlwFMyykmI7auoLfZNKzOI3biRJ-urhgyex
