@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Delete;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface StudentMapper {
@@ -20,4 +21,30 @@ public interface StudentMapper {
     int update(Student student);
     @Delete("DELETE FROM student WHERE id=#{id}")
     int delete(Integer id);
+    @Select ("""
+            <script>
+            SELECT * FROM student
+            <where>
+                <if test="name !=null and name !=''">
+                    name LIKE CONCAT('%',#{name},'%')
+                </if>
+            </where>
+            LIMIT #{size} OFFSET #{offset}
+            </script>
+            """)
+    List<Student>findPage(
+        @Param ("name") String name,
+        @Param("offset") int offset,
+        @Param("size") int size);
+    @Select ("""
+            <script>
+            SELECT COUNT(*) FROM student
+            <where>
+                <if test="name !=null and name!=''">
+                    name LIKE CONCAT('%',#{name},'%')
+                </if>
+            </where>
+            </script>
+            """)
+    int countAll(@Param ("name") String name);
 }

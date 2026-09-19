@@ -1,2 +1,2 @@
-DELETE http://localhost:8080/students/delete/1
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODk3MjAwMjMsImV4cCI6MTc4OTcyMzYyM30.ihr6aduG-9LZMEunaQ8cDRz2kKLvjWlwFMyykmI7auoLfZNKzOI3biRJ-urhgyex
+GET  http://localhost:8080/students?page=1&size=1&name=张
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODk4MDM3MTksImV4cCI6MTc4OTgwNzMxOX0.1ZUnmtTaFmy0LPZfNytbuPOgwuccJB32V67hEav0yJMd-GdajT6WeIqssGKX0boD

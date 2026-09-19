@@ -26,9 +26,12 @@ public class StudentController {
     }
 
     @GetMapping
-    public Result findAll(){
-       return Result.success(studentService.findAll());
-    }
+    public Result findPage(
+            @RequestParam(defaultValue="1") int page,
+            @RequestParam(defaultValue="10") int size,
+            @RequestParam(required=false) String name){
+                return Result.success(studentService.findPage(page,size,name));
+            }
 
     @RequireRole ("ADMIN")
     @PostMapping("/insert")
