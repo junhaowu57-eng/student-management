@@ -18,11 +18,7 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public Result findById(@PathVariable Integer id){
-       Student student=studentService.findById(id);
-       if(student==null){
-        return Result.error(404,"学生不存在");
-       }
-       return Result.success(student);
+       return Result.success(studentService.findById(id));
     }
 
     @GetMapping
@@ -36,27 +32,18 @@ public class StudentController {
     @RequireRole ("ADMIN")
     @PostMapping("/insert")
     public Result insert(@Valid @RequestBody Student student,HttpServletRequest request){
-        int rows=studentService.insert(student);
-        return Result.success(rows);
+        return Result.success(studentService.insert(student));
     }
 
     @RequireRole("ADMIN")
     @PutMapping("/update")
     public Result update(@Valid @RequestBody Student student,HttpServletRequest request){
-        int rows=studentService.update(student);
-        if(rows==0){
-            return Result.error(404,"学生不存在");
-        }
-        return Result.success(rows);
+        return Result.success(studentService.update(student));
     }
     
     @RequireRole("ADMIN")
     @DeleteMapping("/delete/{id}")
     public Result delete(@Valid @PathVariable Integer id,HttpServletRequest request){
-        int rows=studentService.delete(id);
-        if(rows==0){
-            return Result.error(404,"学生不存在");
-        }
-        return Result.success(rows);
+        return Result.success(studentService.delete(id));
     }
 }

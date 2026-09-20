@@ -1,2 +1,2 @@
-GET  http://localhost:8080/students?page=1&size=1&name=张
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODk4MDM3MTksImV4cCI6MTc4OTgwNzMxOX0.1ZUnmtTaFmy0LPZfNytbuPOgwuccJB32V67hEav0yJMd-GdajT6WeIqssGKX0boD
+GET  http://localhost:8080/students/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODk4ODk3MDUsImV4cCI6MTc4OTg5MzMwNX0.KqzgHB4hs-jfckHtNaPbRz38yVOdvX4kelduCjWmxv4Myu92ycG1KqdTlN3VpNIU

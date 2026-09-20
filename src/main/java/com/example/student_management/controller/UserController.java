@@ -22,11 +22,7 @@ public class UserController {
 
     @PostMapping("/register")
     public Result register(@Valid @RequestBody User user){
-        int rows=userService.register(user);
-        if(rows==0){
-            return Result.error(400,"用户已存在");
-        }
-        return Result.success(rows);
+        return Result.success(userService.register(user));
     }
     
     @PostMapping("/login")
@@ -35,9 +31,6 @@ public class UserController {
             user.getUsername(),
             user.getPassword()
         );
-        if(loginUser==null){
-            return Result.error(400,"用户名或密码错误");
-        }
         String token=JwtUtil.generateToken(loginUser.getUsername(),loginUser.getRole());
         return Result.success(token);
     }

@@ -13,8 +13,6 @@ import org.apache.ibatis.annotations.Param;
 public interface StudentMapper {
     @Select("SELECT * FROM student WHERE id=#{id}")
     Student findById(Integer id);
-    @Select("SELECT *FROM student")
-    List<Student>findAll();
     @Insert("INSERT INTO student(name,age,gender,email) VALUES(#{name},#{age},#{gender},#{email})")
     int insert(Student student);
     @Update("UPDATE student SET name=#{name},age=#{age},gender=#{gender},email=#{email} WHERE id=#{id}")

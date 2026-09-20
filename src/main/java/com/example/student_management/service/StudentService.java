@@ -5,6 +5,7 @@ import com.example.student_management.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.example.student_management.common.PageResult;
+import com.example.student_management.exception.BusinessException;
 
 @Service
 public class StudentService {
@@ -14,23 +15,35 @@ public class StudentService {
     }
 
     public Student findById(Integer id){
-        return studentMapper.findById(id);
-    }
-    
-    public List<Student>findAll(){
-        return studentMapper.findAll();
+        Student student=studentMapper.findById(id);
+        if(student==null){
+            throw new BusinessException(404, "学生不存在");
+        }
+        return student;
     }
 
     public int insert(Student student){
-        return studentMapper.insert(student);
+        int rows=studentMapper.insert(student);
+        if(rows==0){
+            throw new BusinessException(404, "学生不存在");
+        }
+        return rows;
     }
 
     public int update(Student student){
-        return studentMapper.update(student);
+        int rows=studentMapper.update(student);
+        if(rows==0){
+            throw new BusinessException(404, "学生不存在");
+        }
+        return rows;
     }
 
     public int delete(Integer id){
-        return studentMapper.delete(id);
+        int rows=studentMapper.delete(id);
+        if(rows==0){
+            throw new BusinessException(404,"学生不存在");
+        }
+        return rows;
     }
     public PageResult<Student> findPage(int page,int size,String name){
         int offset=(page-1)*size;
