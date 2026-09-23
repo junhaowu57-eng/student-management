@@ -1,4 +1,5 @@
-POST http://localhost:8080/students/insert
+POST http://localhost:8080/students
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsaXNpIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3OTAxNDc3NzgsImV4cCI6MTc5MDE1MTM3OH0.csV3ccqAmrZAZXBxjvNXdkiFG8Co4v-MhJRjdU0XcTCT3p0-LzXyZNZkeiqJZ6k4
 Content-Type: application/json
 
 {
