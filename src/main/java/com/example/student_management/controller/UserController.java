@@ -14,10 +14,6 @@ import com.example.student_management.User;
 import com.example.student_management.common.Result;
 import com.example.student_management.dto.LoginDTO;
 import com.example.student_management.dto.RegisterDTO;
-<<<<<<< HEAD
-=======
-import com.example.student_management.vo.LoginVO;
->>>>>>> eba346e246de06ab3546280529d5ec1aa5859624
 
 @RestController 
 @RequestMapping("/users")
