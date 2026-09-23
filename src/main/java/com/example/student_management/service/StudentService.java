@@ -46,6 +46,15 @@ public class StudentService {
         return rows;
     }
     public PageResult<Student> findPage(int page,int size,String name){
+        if(page<1){
+            throw new BusinessException(400, "页码不能小于1");
+        }
+        if(size<1){
+            throw new BusinessException(400, "每页数量不能小于1");
+        }
+        if(size>100){
+            throw new BusinessException(400, "每页数量不能超过100");
+        }
         int offset=(page-1)*size;
         List<Student>records=studentMapper.findPage(name,offset,size);
         int total=studentMapper.countAll(name);
