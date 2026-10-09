@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="login-box">
+        <h1>学生管理系统</h1>
+
+        <label class="form-label">用户名：</label>
+        <input type="text" id="username">
+
+        <br>
+
+        <label class="form-label">密码：</label>
+        <input type="password" id="password">
+
+        <br>
+
+        <button onclick="login()">登录</button>
+        <button onclick="logout()">退出登录</button>
+        <div id="addSection" style="display:none;">
+            <h2>新增学生</h2>
+            <div class="add-student">
+                <input type="text"
+                    id="newName"
+                    placeholder="学生姓名">
+                <input type="number"
+                    id="newAge"
+                    placeholder="年龄"
+                    min="1">
+                <select id="newGender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+                <input type="email"
+                    id="newEmail"
+                    placeholder="邮箱">
+                <button onclick="addStudent()">新增学生</button> 
+            </div>
+        </div>
+        <h2>修改学生</h2>
+        <div id="editBox" style="display: none;">
+            <input type="hidden" id="editId">
+            <input type="text"
+                    id="editName"
+                    placeholder="学生姓名">
+            <input type="number"
+                    id="editAge"
+                    placeholder="年龄">
+            <select id="editGender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <input type="email"
+                    id="editEmail"
+                    placeholder="邮箱">
+            <button onclick="saveStudent()">保存修改</button>
+        </div>
+        <h2>学生列表</h2>
+        <label>姓名：</label>
+        <input type="text" id="searchName">
+
+        <button onclick="searchStudents()">搜索</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>邮箱</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                
+            </tbody>
+        </table>
+        <button onclick="previousPage()">上一页</button>
+        <span id="pageInfo">第1页</span>
+        <button onclick="nextPage()">下一页</button>
+        <script src="script.js"></script>
+        </body>
+    </div>
+    
+</html>

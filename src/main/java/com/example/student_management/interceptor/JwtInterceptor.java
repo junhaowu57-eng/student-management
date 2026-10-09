@@ -48,6 +48,9 @@ public class JwtInterceptor implements HandlerInterceptor{
 
     @Override 
     public boolean preHandle(HttpServletRequest request,HttpServletResponse response,Object handler) throws Exception{
+        if("OPTIONS".equalsIgnoreCase(request.getMethod())){
+            return true;
+        }
         String authHeader=request.getHeader("Authorization");
         if(authHeader==null||!authHeader.startsWith("Bearer ")){
             return writeError(response, 401, "未登录或无效token");

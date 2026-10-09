@@ -1,0 +1,80 @@
+﻿[
+    {
+        "test":  "create-fixture",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "find-fixture",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "update-all-fields",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "read-updated",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "repeat-same-update",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "reject-empty-name",
+        "http":  200,
+        "code":  400,
+        "message":  "姓名不能为空"
+    },
+    {
+        "test":  "reject-negative-age",
+        "http":  200,
+        "code":  400,
+        "message":  "年龄不能小于1"
+    },
+    {
+        "test":  "reject-unauthenticated-update",
+        "http":  401,
+        "code":  401,
+        "message":  "未登录或无效token"
+    },
+    {
+        "test":  "user-login",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "reject-user-update",
+        "http":  403,
+        "code":  403,
+        "message":  "没有权限"
+    },
+    {
+        "test":  "verify-rejected-updates-no-change",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "reject-missing-id",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    },
+    {
+        "test":  "reject-nonexistent-id",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    }
+]

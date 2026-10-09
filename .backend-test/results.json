@@ -1,0 +1,182 @@
+﻿[
+    {
+        "test":  "no-token",
+        "http":  401,
+        "code":  401,
+        "message":  "未登录或无效token"
+    },
+    {
+        "test":  "invalid-token",
+        "http":  401,
+        "code":  401,
+        "message":  "未登录或无效token"
+    },
+    {
+        "test":  "expired-token",
+        "http":  401,
+        "code":  401,
+        "message":  "未登录或无效token"
+    },
+    {
+        "test":  "empty-register",
+        "http":  200,
+        "code":  400,
+        "message":  "用户名不能为空"
+    },
+    {
+        "test":  "register",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "duplicate-register",
+        "http":  200,
+        "code":  400,
+        "message":  "用户名已存在"
+    },
+    {
+        "test":  "wrong-password",
+        "http":  200,
+        "code":  400,
+        "message":  "用户名或密码错误"
+    },
+    {
+        "test":  "login",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "user-list",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "user-create-forbidden",
+        "http":  403,
+        "code":  403,
+        "message":  "没有权限"
+    },
+    {
+        "test":  "admin-create",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "name-filter",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "detail",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "user-update-forbidden",
+        "http":  403,
+        "code":  403,
+        "message":  "没有权限"
+    },
+    {
+        "test":  "user-delete-forbidden",
+        "http":  403,
+        "code":  403,
+        "message":  "没有权限"
+    },
+    {
+        "test":  "admin-update",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "verify-update",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "invalid-page",
+        "http":  200,
+        "code":  400,
+        "message":  "页码不能小于1"
+    },
+    {
+        "test":  "invalid-size",
+        "http":  200,
+        "code":  400,
+        "message":  "每页数量不能超过100"
+    },
+    {
+        "test":  "invalid-page-type",
+        "http":  400,
+        "code":  null,
+        "message":  null
+    },
+    {
+        "test":  "empty-name",
+        "http":  200,
+        "code":  400,
+        "message":  "姓名不能为空"
+    },
+    {
+        "test":  "negative-age",
+        "http":  200,
+        "code":  400,
+        "message":  "年龄不能小于1"
+    },
+    {
+        "test":  "missing-age",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "invalid-email",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "missing-update-id",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    },
+    {
+        "test":  "missing-record",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    },
+    {
+        "test":  "missing-update-record",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    },
+    {
+        "test":  "admin-delete",
+        "http":  200,
+        "code":  200,
+        "message":  "success"
+    },
+    {
+        "test":  "verify-delete",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    },
+    {
+        "test":  "delete-again",
+        "http":  200,
+        "code":  404,
+        "message":  "学生不存在"
+    }
+]
