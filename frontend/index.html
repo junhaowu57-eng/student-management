@@ -1,91 +1,190 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>学生管理系统</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="login-box">
-        <h1>学生管理系统</h1>
+    <!-- 登录页面 -->
+    <section id="loginPage" class="login-page">
+        <div class="login-box">
+            <div class="brand-icon" aria-hidden="true">学</div>
+            <p class="eyebrow">STUDENT MANAGEMENT</p>
+            <h1>欢迎登录</h1>
+            <p class="muted">登录学生管理系统，开始管理学生信息。</p>
 
-        <label class="form-label">用户名：</label>
-        <input type="text" id="username">
+            <form id="loginForm">
+                <label for="username">用户名</label>
+                <input id="username" autocomplete="username" placeholder="请输入用户名" required>
 
-        <br>
+                <label for="password">密码</label>
+                <input type="password" id="password" autocomplete="current-password" placeholder="请输入密码" required>
 
-        <label class="form-label">密码：</label>
-        <input type="password" id="password">
+                <p id="loginError" class="error" role="alert"></p>
+                <button id="loginButton" class="primary full" type="submit">
+                    登录系统 <span aria-hidden="true">→</span>
+                </button>
+            </form>
 
-        <br>
+            <p class="login-foot">学生管理系统 · 安全访问</p>
+        </div>
+    </section>
 
-        <button onclick="login()">登录</button>
-        <button onclick="logout()">退出登录</button>
-        <div id="addSection" style="display:none;">
-            <h2>新增学生</h2>
-            <div class="add-student">
-                <input type="text"
-                    id="newName"
-                    placeholder="学生姓名">
-                <input type="number"
-                    id="newAge"
-                    placeholder="年龄"
-                    min="1">
-                <select id="newGender">
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </select>
-                <input type="email"
-                    id="newEmail"
-                    placeholder="邮箱">
-                <button onclick="addStudent()">新增学生</button> 
+    <!-- 管理页面：登录验证成功后显示 -->
+    <div id="managementPage" hidden>
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-icon small" aria-hidden="true">学</span>
+                <strong>学生管理系统</strong>
             </div>
-        </div>
-        <h2>修改学生</h2>
-        <div id="editBox" style="display: none;">
-            <input type="hidden" id="editId">
-            <input type="text"
-                    id="editName"
-                    placeholder="学生姓名">
-            <input type="number"
-                    id="editAge"
-                    placeholder="年龄">
-            <select id="editGender">
-                <option value="男">男</option>
-                <option value="女">女</option>
-            </select>
-            <input type="email"
-                    id="editEmail"
-                    placeholder="邮箱">
-            <button onclick="saveStudent()">保存修改</button>
-        </div>
-        <h2>学生列表</h2>
-        <label>姓名：</label>
-        <input type="text" id="searchName">
 
-        <button onclick="searchStudents()">搜索</button>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>姓名</th>
-                    <th>年龄</th>
-                    <th>性别</th>
-                    <th>邮箱</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody id="studentTableBody">
-                
-            </tbody>
-        </table>
-        <button onclick="previousPage()">上一页</button>
-        <span id="pageInfo">第1页</span>
-        <button onclick="nextPage()">下一页</button>
-        <script src="script.js"></script>
-        </body>
+            <div class="account">
+                <span id="currentUsername"></span>
+                <span id="currentRole" class="badge"></span>
+                <button onclick="logout()" class="quiet">退出登录</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="breadcrumb">工作台 <span>/</span> 学生管理</div>
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">STUDENTS</p>
+                    <h1>学生管理</h1>
+                    <p class="muted">集中查看与管理学生档案，让信息管理井然有序。</p>
+                </div>
+
+                <!-- 管理员专属入口 -->
+                <div id="addSection" hidden>
+                    <button class="primary" onclick="openAddModal()">
+                        <span aria-hidden="true">＋</span> 新增学生
+                    </button>
+                </div>
+            </div>
+
+            <!-- 学生列表、搜索与分页 -->
+            <section class="list-card" aria-labelledby="listTitle">
+                <div class="card-heading">
+                    <div>
+                        <h2 id="listTitle">学生列表</h2>
+                        <p class="muted">查看学生信息，支持按姓名搜索</p>
+                    </div>
+                    <span class="badge">每页 10 条</span>
+                </div>
+
+                <form id="searchForm" class="search-bar">
+                    <label class="sr-only" for="searchName">学生姓名</label>
+                    <div class="search-input">
+                        <span aria-hidden="true">⌕</span>
+                        <input id="searchName" placeholder="输入学生姓名搜索" autocomplete="off">
+                    </div>
+                    <button id="searchButton" class="primary" type="submit">搜索</button>
+                    <button type="button" onclick="resetSearch()">重置</button>
+                </form>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>姓名</th>
+                                <th>年龄</th>
+                                <th>性别</th>
+                                <th>邮箱</th>
+                                <th id="actionHeader" hidden>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <span id="listStatus" class="muted" role="status"></span>
+                    <div>
+                        <button id="previousButton" onclick="previousPage()">上一页</button>
+                        <span id="pageInfo">第 1 页</span>
+                        <button id="nextButton" onclick="nextPage()">下一页</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer>学生管理系统 <span>·</span> 学生信息工作台</footer>
+        </main>
     </div>
-    
+
+    <!-- 新增和修改共用弹窗，表单根据当前操作切换 -->
+    <dialog id="studentModal" aria-labelledby="modalTitle">
+        <div class="modal-heading">
+            <div>
+                <h2 id="modalTitle">新增学生</h2>
+                <p class="muted">填写学生基本信息</p>
+            </div>
+            <button id="closeModalButton" onclick="closeModal()" aria-label="关闭弹窗" class="icon-button">×</button>
+        </div>
+
+        <form id="studentForm">
+            <!-- 新增学生字段 -->
+            <div id="newBox" class="form-grid">
+                <div>
+                    <label for="newName">姓名 <span>*</span></label>
+                    <input id="newName" placeholder="请输入姓名" required>
+                </div>
+                <div>
+                    <label for="newAge">年龄 <span>*</span></label>
+                    <input id="newAge" type="number" min="1" step="1" placeholder="请输入年龄" required>
+                </div>
+                <div>
+                    <label for="newGender">性别</label>
+                    <select id="newGender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="newEmail">邮箱</label>
+                    <input id="newEmail" type="email" placeholder="name@example.com">
+                </div>
+            </div>
+
+            <!-- 修改学生字段：打开时回填后端数据 -->
+            <div id="editBox" class="form-grid" hidden>
+                <input id="editId" type="hidden">
+                <div>
+                    <label for="editName">姓名 <span>*</span></label>
+                    <input id="editName" required>
+                </div>
+                <div>
+                    <label for="editAge">年龄 <span>*</span></label>
+                    <input id="editAge" type="number" min="1" step="1" required>
+                </div>
+                <div>
+                    <label for="editGender">性别</label>
+                    <select id="editGender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="editEmail">邮箱</label>
+                    <input id="editEmail" type="email">
+                </div>
+            </div>
+
+            <p id="formError" class="error" role="alert"></p>
+            <div class="modal-actions">
+                <button id="cancelButton" type="button" onclick="closeModal()">取消</button>
+                <button id="saveButton" class="primary" type="submit">新增学生</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- 全局操作反馈 -->
+    <div id="toast" class="toast" role="status" hidden></div>
+
+    <script src="script.js"></script>
+</body>
 </html>
